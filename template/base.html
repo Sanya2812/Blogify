@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+</head>
+<body>
+
+    {% include 'header.html' %}
+
+    {% block content %}
+    {% endblock %}
+
+    {%include 'footer.html' %}
+
+    <!-- Load jQuery first -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+
+    <!-- Load Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Load Owl Carousel JavaScript -->
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+    <script>
+        // Initialize Materialize Components
+        document.addEventListener("DOMContentLoaded", function () {
+            M.AutoInit();
+        });
+
+        // Initialize Owl Carousel
+        $(document).ready(function () {
+            $(".owl-carousel").owlCarousel({
+                loop: true, // Ensures looping works correctly
+                autoplay: true,
+                nav: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: false
+                    },
+                    600: {
+                        items: 3,
+                        nav: false
+                    },
+                    1000: {
+                        items: 4,
+                        nav: true,
+                        loop: true // Fixed: Ensures looping works for large screens
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
